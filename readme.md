@@ -4,7 +4,7 @@
 - 100% pure web messenger : tested on Chrome
 - android(kotlin) and ios(swift) supported : webview covers mobile UI
 
-See the details at [https://sendjay.com](https://sendjay.com)
+See the details and test at [https://sendjay.com](https://sendjay.com).
 
 All .github files should be handled as follows when real use in your environment after download. 
 아래와 같이 .github로 끝나는 파일은 다운로드후 실제 운영 적용시 .github를 제거하고 사용하시기 바랍니다.
