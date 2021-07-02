@@ -43,9 +43,11 @@
                     page -= 1
                 }
             }
-            const _width = 300;
-            const _height = g_arr[page - 1].height * _width / g_arr[page - 1].width
-            $("#fr_img").width(_width)
+            //const _width = 300;
+            //const _height = g_arr[page - 1].height * _width / g_arr[page - 1].width
+            const _height = 500
+            const _width = g_arr[page - 1].width * _height / g_arr[page - 1].height
+            $("#fr_img").width(parseInt(_width))
             $("#fr_img").height(parseInt(_height))
             let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:100%;height:100%'>"
             //let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:" + _width + "px;height:" + _height + "px'>"
