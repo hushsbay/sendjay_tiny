@@ -21,11 +21,10 @@
     </style>
     <script>
         const g_arr = [             
-            { file : "/content/list_team.png", play : false },
-            { file : "/content/list_tree.png", play : false },
-            { file : "/content/chat.png", play : false },
-            { file : "/content/list_chat_mobile.png", play : false },
-            { file : "/content/chat_mobile.png", play : false }
+            { file : "/content/list_team.png", play : false, width : 501, height : 906 },
+            { file : "/content/list_tree.png", play : false, width : 611, height : 906 },
+            { file : "/content/list_chat_mobile.png", play : false, width : 377, height : 906 },
+            { file : "/content/chat_mobile.png", play : false, width : 377, height : 906 }
         ]
 
         const procMove = (up) => {
@@ -43,8 +42,11 @@
                 } else {
                     page -= 1
                 }
-            }                    
-            let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:100%;height:100%'>"
+            }
+            const _width = 300;
+            const _height = g_arr[page - 1].height * _width / g_arr[page - 1].width
+            //let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:100%;height:100%'>"
+            let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:" + _width + "px;height:" + _height + "px'>"
             $("#img_slider").html(_html)
             procClickPlacard()
             if (g_arr[page - 1].play) {
