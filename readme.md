@@ -1,4 +1,4 @@
-'sendjay' Enterprise Messenger for Developer
+'sendjay' Enterprise Messenger for Developer. 
 'sendjay' 사내 메신저 (개발자 전용)
 
 - multi socket server, multi chat window : nodejs, socket.io, redis, mysql, jquery
@@ -7,7 +7,7 @@
 
 See the details at [https://sendjay.com](https://sendjay.com)
 
-All .github files should be handled as follows when real use in your environment after download.
+All .github files should be handled as follows when real use in your environment after download. 
 아래와 같이 .github로 끝나는 파일은 다운로드후 실제 운영 적용시 .github를 제거하고 사용하시기 바랍니다.
 
 - package.json.github -> package.json
