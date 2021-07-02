@@ -45,8 +45,10 @@
             }
             const _width = 300;
             const _height = g_arr[page - 1].height * _width / g_arr[page - 1].width
-            //let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:100%;height:100%'>"
-            let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:" + _width + "px;height:" + _height + "px'>"
+            $("#fr_img").width(_width)
+            $("#fr_img").height(parseInt(_height))
+            let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:100%;height:100%'>"
+            //let _html = "<img src=" + g_arr[page - 1].file + " id=placard" + (page - 1).toString() + " class=placard style='width:" + _width + "px;height:" + _height + "px'>"
             $("#img_slider").html(_html)
             procClickPlacard()
             if (g_arr[page - 1].play) {
