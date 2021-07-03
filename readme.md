@@ -1,24 +1,24 @@
 'sendjay' Enterprise Messenger. 사내 메신저 (업무용 메신저)
 
 - multi socket server, multi chat window : nodejs, socket.io, redis, mysql, jquery
-- 100% pure web messenger : tested on Chrome
-- android(kotlin) and ios(swift) supported : webview covers mobile UI
+- web messenger : embeded on your portal site (24 hours immortal)
+- android(kotlin) and ios(swift) supported : reuse web module on mobile webview
 
 See the details and test at [https://sendjay.com](https://sendjay.com).
 
 Web Messenger Demo 01 <br/>
 ![Web Messenger 01](./sendjay/public/content/list_team.png)
 
-Web Messenger Demo 02 <br />
+Web Messenger Demo 02 <br/>
 ![Web Messenger 02](./sendjay/public/content/list_tree.png)
 
-Mobile Messenger Demo 01 <br />
+Mobile Messenger Demo 01 <br/>
 ![Mobile Messenger 01](./sendjay/public/content/list_chat_mobile.png)
 
-Mobile Messenger Demo 02 <br />
+Mobile Messenger Demo 02 <br/>
 ![Mobile Messenger 02](./sendjay/public/content/chat_mobile.png)
 
-All .github files should be handled as follows when real use in your environment after download. <br />
+All .github files should be handled as follows when real use in your environment after download. <br/>
 아래와 같이 .github로 끝나는 파일은 다운로드후 실제 운영 적용시 .github를 제거하고 사용하시기 바랍니다.
 
 - package.json.github -> package.json
