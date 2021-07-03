@@ -6,6 +6,8 @@
 
 See the details and test at [https://sendjay.com](https://sendjay.com).
 
+![Web Messenger 01](./sendjay/public/content/list_team.png)
+
 All .github files should be handled as follows when real use in your environment after download. 
 아래와 같이 .github로 끝나는 파일은 다운로드후 실제 운영 적용시 .github를 제거하고 사용하시기 바랍니다.
 
