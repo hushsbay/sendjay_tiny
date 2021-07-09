@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "cors": "^2.8.5",
+    "emoji": "^0.3.2",
     "express": "^4.17.1",
     "firebase-admin": "^9.6.0",
     "fluent-ffmpeg": "^2.1.2",
