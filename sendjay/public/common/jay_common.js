@@ -835,7 +835,7 @@
             winopen : (url, w, h) => {
                 const _width = w ? w : "550"
                 const _height = h ? h : "700"
-                return window.open(url, "", "left=100,top=100,width=" + _width + ",height=" + _height + ",menubar=no,status=no,toolbar=no,resizable=yes,location=no")
+                return window.open(url, "", "width=" + _width + ",height=" + _height + ",menubar=no,status=no,toolbar=no,resizable=yes,location=no")
             },
             animAction : function(tag, callback) { //jqueryui
                 const _prevBackcolor = tag.css("background-color")
