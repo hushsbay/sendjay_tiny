@@ -78,7 +78,7 @@
             try {
                 await $.getScript("/common/jay_common.js")
                 const param = hush.http.getParamsFromLocation()
-                hush.http.removeCache(param.nocache)
+                //hush.http.removeCache(param.nocache)
                 procMove(1)
                 if (!hush.util.isMobile()) {
                     $("#btn_web").show()
