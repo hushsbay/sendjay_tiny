@@ -7,18 +7,18 @@
     <link id="favicon" href="/img/sendjay_darkblue.png" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" href="/etc/wiseTreeView/jquery-wiseTreeView-1.0.css">
     <script src="/plugin/jquery-3.4.1.min.js"></script>	
-	<script src="/etc/wiseTreeView/jquery-wiseTreeView-1.0.js"></script>
+	<script src="/etc/wiseTreeView/jquery-wiseTreeView-1.0.js"></script>   
     <style>
 		* { font-family:맑은 고딕;font-size:14px }
 		html, body { height:100%;margin:0px }
-		input[type="search"] { -webkit-appearance:textfield;box-sizing:content-box; } /* solution for search type not worked with height */
+		/* input[type="search"] { -webkit-appearance:textfield;box-sizing:content-box; } 
 		input { height:28px;padding-left:5px;padding-right:5px }
 		input::placeholder { font-size:13px;color:lightgray }
 		input[type="checkbox"] { width:16px;height:16px;-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;appearance:none;background-size:16px 16px;outline:1px solid darkgray }
 		input[type="checkbox"]:checked { width:16px;height:16px;background:white url('/wise/wise/merp/images/selecton.png') no-repeat;background-size:16px 16px;background-position:50% 50%;outline:none }
 		.coImg24 { width:24px;height:24px;vertical-align:middle;cursor:pointer }
 		.coImg32 { width:32px;height:32px;vertical-align:middle;cursor:pointer }
-		.coImgMenu { width:24px;height:24px;vertical-align:middle;cursor:pointer;margin-right:5px } /* 0086cd(more blue) */
+		.coImgMenu { width:24px;height:24px;vertical-align:middle;cursor:pointer;margin-right:5px }
 		.coImgBtn { display:flex;align-items:center;justify-content:center;width:32px;height:32px;background-color:#0082AD;border-radius:4px;cursor:pointer;margin-left:10px }
 		.coMenuBtn { display:flex;align-items:center;height:32px;background-color:#0082AD;color:white;border-radius:4px;padding:0px 5px;cursor:pointer;margin-left:10px }
 		.plate { width:calc(100% - 96px);flex-grow:1;position:relative;display:flex;flex-direction:column;background-color:white;border:1px solid darkgray;overflow:auto;margin-right:2px }
@@ -31,28 +31,13 @@
 		.nf_cl { background:darkgray }
 		.chk_gen_cl { background:#FFCCCC }		
 		.manual_cl { background:#FDE1B4 }
-		.later_cl { background:#BECDFF }		
+		.later_cl { background:#BECDFF }		 */
     </style>
 </head>
 <body>
     <div id=main_pg style="width:100%;height:100%;display:flex;flex-direction:column;background-color:#eaeaea">
         <div id=fr_top style="height:45px;display:flex;justify-content:space-between;margin:0px 5px">    
-            <div style="display:flex;align-items:center">
-                <!-- <input id=in_search type=search spellcheck=false onsearch="OnSearch(this)" style="width:120px" />
-                <div id=btn_search class=coImgBtn  style="margin-right:6px"><img src="/wise/wise/msngr/images/btn_search.png" class=coImg24 /></div>
-                <input name=rdoGubun id=rdoGw value="gw" checked=checked type=radio><span id=spnGw style="cursor:pointer;font-weight:bold;height:24px;line-height:24px">GW</span>
-				<input name=rdoGubun id=rdoErp value="erp" type=radio><span id=spnErp style="cursor:pointer;font-weight:bold;height:24px;line-height:24px">ERP</span>
-                <div id=btn_qry class="coMenuBtn" ><span>조회(All)</span></div>
-	            <div id=btn_refresh class="coMenuBtn"><span>새로고침</span></div>
-	            <div id=btn_collapseall class="coMenuBtn" ><span>모두접기</span></div>
-	            <div id=btn_expandall class="coMenuBtn"><span>모두펼치기</span></div>
-	            <div id=btn_migrate class="coMenuBtn" style="margin-left:40px"><img src="/wise/wise/msngr/images/btn_ok.png" class=coImgMenu /><span>이관(Migrate)</span></div>
-	            <div id=btn_testing class="coMenuBtn"><span>테스트요청</span></div>
-	            <div id=btn_done class="coMenuBtn"><span>최종완료</span></div>
-	            <div id=btn_reset class="coMenuBtn"><span>리셋</span></div>
-	           	<div id=btn_svn_cleanup class="coMenuBtn"><span>SVN_CleanUp</span></div>
-	           	<div id=btn_open_tab class="coMenuBtn"><span>새탭으로열기</span></div>
-	           	<div id=btn_test01 class="coMenuBtn"><span>Test01</span></div> -->
+            <div style="display:flex;align-items:center">                
             </div>
         </div>
         <div id=fr_main style="position:relative;height:calc(100% - 65px);display:flex;align-items:stretch;margin:0px 5px">
@@ -63,66 +48,10 @@
             </div>
         </div>
         <div id=fr_bottom style="position:relative;height:20px;align-items:center;font-weight:bold;margin:0px 5px">
-        	<div style="float:left;width:200px">파일 : <span id="cntTotal">0</span> / 선택 : <span id="cntSel" style="color:red">0</span></div>
-        	<div style="float:left"><span id="btn_deselect" style="color:darkblue;cursor:pointer">전체선택취소</span></div>
         </div>
     </div>
-    <script>
-    	//아래 const 변경시 header.xml의 cfg 명령어에도 같이 변경 필요
-	    const host = "https://domdev2.sbs.co.kr:9452"; //개발서버 전용. 운영에서 실행되면 안됨 //"https://" + ((location.href.indexOf("wisedev.sbs.co.kr") > -1) ? "domdev2" : "lms") + ".sbs.co.kr:9452";
-		const key = "JKHDGAFDKGNATMLCBLKJFDGHGOPEWRIU";
-		const opt = { 
-			dataType : "json" //response data type
-			,contentType : "application/x-www-form-urlencoded;charset=utf-8" //request mime type => application/json은 CORS 안먹힘
-			,type : "post"
-			,cache : false
-		}
-//		const payload = { salt : "wsq2050!", expiry : 1, userid : $wise.getCookie("USER_ID"), ip : $wise.getCookie("REMOTE_IP") }; //0은 max=$wise.cons.JWT_EXPIRY_MAX
-		
-		let list = $("#tree");
-				
-        /*$(document).ready(function() {
-       		$wise.onceJwtCall(payload, false, async function(token) {
-       			opt.url = host + "/makejson";
-       			opt.data = { key : key, token : token, file : "treedata_utf8.txt" }
-       			//opt.url = host + "/readjson";
-       			//opt.data = { key : key, token : token, file : "treedata_utf8.txt.json" }
-       			try {
-       				$wise.toastStart($wise.cons.AJAX_PROCESSING, null, "orange");
-       				const rs = await $.ajax(opt);
-       				$wise.toastEnd();
-       				if (rs.code != "0") alert(rs.msg)	
-					let option = { 
-						fieldMatch : {
-							id : function(row, idx) { return row.cd },
-							nm : function(row, idx) { return row.nm_kor + " (" + row.cd + ", " + row.nm_eng + ", " + idx.toString() + ")" }, 
-							depth : function(row, idx) { 
-								if (row.cd.substring(2) == '000000') {
-									return 0
-								} else if (row.cd.substring(4) == '0000') {
-									return 1
-								} else if (row.cd.substring(5) == '000') {
-									return 2
-								} else {
-									return 3
-								}
-							}  
-						}
-					}
-       				list.wiseTreeView(option, rs.list, function(ret) { 
-       					$("#filepath").html("callback done.." + ret.totalCount) 
-       				})
-       				//const ret = await list.wiseTreeViewAsync(option, rs.list)
-       				//$("#filepath").html("callback done.." + ret.totalCount)
-       				$("#filesrc").html("end..")
-       			} catch (ex) {
-       				$wise.toastEnd();
-       				alert(ex.message)
-       			}
-   			}, function(ex1) {
-   				alert("jwt: " + ex1.message);
-   			});
-        })*/
+    <script>    	
+		let list = $("#tree")
         
         const json = [
 {"cd":"11000000","nm_kor":"서울특별시","nm_eng":"Seoul"},
@@ -3923,52 +3852,39 @@
 {"cd":"39020620","nm_kor":"예래동","nm_eng":"Yerae-dong"},
 		]
         
-        //try {
-			let option = { 
-				imgPath : "/etc",
-				fieldMatch : {
-					id : function(row, idx) { return row.cd },
-					nm : function(row, idx) { return row.nm_kor + " (" + row.cd + ", " + row.nm_eng + ", " + idx.toString() + ")" }, 
-					depth : function(row, idx) { 
-						if (row.cd.substring(2) == '000000') {
-							return 0
-						} else if (row.cd.substring(4) == '0000') {
-							return 1
-						} else if (row.cd.substring(5) == '000') {
-							return 2
-						} else {
-							return 3
-						}
+        let option = { 
+			imgPath : "/etc/wiseTreeView",
+			fieldMatch : {
+				id : function(row, idx) { return row.cd },
+				nm : function(row, idx) { return row.nm_kor + " (" + row.cd + ", " + row.nm_eng + ", " + idx.toString() + ")" }, 
+				depth : function(row, idx) { 
+					if (row.cd.substring(2) == '000000') {
+						return 0
+					} else if (row.cd.substring(4) == '0000') {
+						return 1
+					} else if (row.cd.substring(5) == '000') {
+						return 2
+					} else {
+						return 3
 					}
 				}
 			}
+		}
 
-			const ret = list.wiseTreeView(option, json)
-			$("#filepath").html("done.." + ret.totalCount)
-			
-			list.off("wiseTreeNodeShown").on("wiseTreeNodeShown", function(e, data) { 
-				debugger
-			})
-			
-			list.off("wiseTreeNodeHidden").on("wiseTreeNodeHidden", function(e, data) { 
-				debugger
-			})
-			  
-			ret.setNodeLeftImage(454, "/wise/wise/merp/images/selecton.png", 45, 45)
+		const ret = list.wiseTreeView(option, json)
+		$("#filepath").html("done.." + ret.totalCount)
+		
+		list.off("wiseTreeNodeShown").on("wiseTreeNodeShown", function(e, data) { 
 			debugger
-			ret.setNodeLeftImage(454, "/wise/wise/merp/images/folder.png", 45, 45, true)
+		})
+		
+		list.off("wiseTreeNodeHidden").on("wiseTreeNodeHidden", function(e, data) { 
+			debugger
+		})
 			
-			//list.wiseTreeView(option, json, function(ret) { 
-			//	$("#filepath").html("callback done.." + ret.totalCount) 
-			//})
-			
-			//const ret = await list.wiseTreeViewAsync(option, rs.list)
-			//$("#filepath").html("callback done.." + ret.totalCount)
-			//$("#filesrc").html("end..")
-			
- 		//} catch (ex) {
- 		//	alert(ex.message)
- 		//}
+		//ret.setNodeLeftImage(454, "/etc/wiseTreeView/selecton.png", 45, 45)
+		//debugger
+		//ret.setNodeLeftImage(454, "/etc/wiseTreeView/folder.png", 45, 45, true)
     </script>
 </body>
 </html>
