@@ -1,0 +1,6 @@
+.wiseTreePlate { display:flex;flex-direction:column;background-color:white;border:1px solid darkgray;font-family:맑은 고딕;font-size:14px;overflow:auto }
+.wiseTreeImg18 { width:18px;height:18px;vertical-align:middle;cursor:pointer }
+.wiseTreeImg32 { width:32px;height:32px;vertical-align:middle;cursor:pointer }
+.wiseTreeDotDot { position:relative;white-space:nowrap;text-overflow:ellipsis;overflow:hidden }
+input[wiseTree="Y"] { width:16px;height:16px;-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;appearance:none;background-size:16px 16px;border:1px solid darkgray }
+input[wiseTree="Y"]:checked { width:16px;height:16px;background:white url('') no-repeat;background-size:16px 16px;background-position:50% 50%;border:none }
