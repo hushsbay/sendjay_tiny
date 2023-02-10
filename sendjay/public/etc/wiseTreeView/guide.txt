@@ -1,0 +1,7 @@
+여기 etc/wiseTreeView의 원 로컬소스는 C:\git\wiseTreeView에 있으며
+원 서버소스는 github.com/hushsbay/wiseTreeView이다.
+
+.gitignore는 아직 필요없으며 
+readme.md는 서버에서 생성하여 작성하고 필요시 로컬로 내리는 것으로 한다.
+
+sendjay 서버에서 테스트하려면 C:\git\sendjay_tiny\sendjay\public\etc\wiseTreeView로 복사해서 별도로 git push 필요함
